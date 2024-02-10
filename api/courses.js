@@ -6,6 +6,7 @@ const { collection, doc, getDoc, addDoc, getDocs, updateDoc, serverTimestamp } =
 const usersCollection = collection(db, 'courses');
 
 router.post('/addcourse', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const data = req.body;
     const response = await addDoc(usersCollection, data);
     const docRef = doc(db, 'courses', response.id);
@@ -18,6 +19,7 @@ router.post('/addcourse', async(req, res) => {
     res.send("success");
 })
 router.get('/courses', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const dataArray = [];
     const alldocs = await getDocs(usersCollection);
     alldocs.forEach((doc) => {
@@ -29,6 +31,7 @@ router.get('/courses', async(req, res) => {
 })
 
 router.post('/mycourses', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const user_id = req.body.user_id;
     const dataArray = [];
     const alldocs = await getDocs(usersCollection);

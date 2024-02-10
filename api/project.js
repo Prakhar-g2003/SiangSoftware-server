@@ -12,6 +12,7 @@ const uploadImage = require('../middleware/image_upload');
 const ProjectsCollection = collection(db, 'projects');
 
 router.post('/addproject', uploadImage, async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const data = req.body;
     
     console.log(data);
@@ -77,6 +78,7 @@ router.post('/addproject', uploadImage, async(req, res) => {
 })
 
 router.post('/showproject', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const id = req.body.id;
     const docRef = doc(db, 'projects', id);
 
@@ -86,6 +88,7 @@ router.post('/showproject', async(req, res) => {
 })
 
 router.get('/projects', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const dataArray = [];
     const alldocs = await getDocs(ProjectsCollection);
     alldocs.forEach((doc) => {
@@ -110,6 +113,7 @@ router.post('/my-projects', async(req, res) => {
 })
 
 router.post('/add-review', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     console.log(req.body);
     const docRef = doc(db, 'projects', req.body.proj_id);
 

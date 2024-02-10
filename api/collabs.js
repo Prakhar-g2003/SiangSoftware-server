@@ -6,6 +6,7 @@ const { collection, doc, getDoc, addDoc, arrayUnion, getDocs, updateDoc, serverT
 const collabsCollection = collection(db, 'collabs');
 
 router.post('/collab-req', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const data = req.body;
     // console.log(data);
     var response = await addDoc(collabsCollection, data);
@@ -19,6 +20,7 @@ router.post('/collab-req', async(req, res) => {
 })
 
 router.post('/get-collabs', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const id = req.body.user_id;
     const dataArray = [];
     const alldocs = await getDocs(collabsCollection);
@@ -34,6 +36,7 @@ router.post('/get-collabs', async(req, res) => {
 })
 
 router.post('/collab-accept', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const user_id = req.body.user_id;
     const collab_id = req.body.collab_id;
 
@@ -60,6 +63,7 @@ router.post('/collab-accept', async(req, res) => {
 })
 
 router.post('/collab-reject', async(req, res) => { 
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const collab_id = req.body.collab_id;
     await deleteDoc(doc(db, "collabs", collab_id));
     res.json({success: "success"});

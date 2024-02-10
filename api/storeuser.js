@@ -10,6 +10,7 @@ const jwtSecret = "thisisajwtsecretforkritisoftwareps";
 const usersCollection = collection(db, 'users');
 
 router.post('/storeuser', async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const dataFromFrontend = req.body;
     const snapshot = await getDocs(usersCollection);
 
@@ -57,6 +58,7 @@ router.post('/storeuser', async (req, res) => {
 })
 
 router.get('/allusers', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const dataArray = [];
     const alldocs = await getDocs(usersCollection);
     alldocs.forEach((doc) => {
@@ -68,6 +70,7 @@ router.get('/allusers', async(req, res) => {
 
 
 router.get('/top-contributors', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const snapshot = await getDocs(usersCollection);
     const contri_array = [];
 

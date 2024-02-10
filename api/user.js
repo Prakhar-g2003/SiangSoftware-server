@@ -13,6 +13,7 @@ const uploadImage = require('../middleware/image_upload');
 const jwtSecret = "thisisajwtsecretforkritisoftwareps";
 
 router.get('/user-info', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwtDecode(token);
     // console.log(decoded.user.id);
@@ -35,6 +36,7 @@ router.get('/user-info', async(req, res) => {
 })
 
 router.post('/fullinfo', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log(req.body.user_id);
     const docRef = doc(db, 'users', req.body.user_id);
     const docSnap = await getDoc(docRef);
@@ -43,6 +45,7 @@ router.post('/fullinfo', async(req, res) => {
 })
 
 router.post('/update_user_info', uploadImage, async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log(req.body);
     const timestamp = Date.now();
     let fileURL="https://static-00.iconduck.com/assets.00/avatar-default-icon-2048x2048-h6w375ur.png";

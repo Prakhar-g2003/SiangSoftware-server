@@ -6,6 +6,7 @@ const { collection, doc, getDoc, addDoc, getDocs, updateDoc, arrayUnion, serverT
 const feedCollection = collection(db, 'feed');
 
 router.get('/full-feed', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const dataArray = [];
     const alldocs = await getDocs(feedCollection);
     alldocs.forEach((doc) => {
@@ -16,6 +17,7 @@ router.get('/full-feed', async(req, res) => {
 })
 
 router.post('/add-ans', async(req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const docRef = doc(db, 'feed', req.body.ques_id);
     
     const obj = {
@@ -44,6 +46,7 @@ router.post('/add-ans', async(req, res) => {
 
 router.post('/add-ques', async(req, res) => {
     // console.log(req.body);
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     var response = await addDoc(feedCollection, {
         question: req.body,
