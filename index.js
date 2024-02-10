@@ -9,8 +9,11 @@ const port = 3001;
 const cors = require('cors');
 const http = require('http');
 const app = express();
-
-app.use(cors());
+var corsOptions = {
+  origin: "*",
+  originSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 
 app.use((req, res, next) => {
