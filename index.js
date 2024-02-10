@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
 });
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Origin", "https://65c77bb56679d46761506890--helpful-mandazi-6cb8b6.netlify.app/");
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
