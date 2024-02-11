@@ -38,7 +38,7 @@ app.use('/api', collabs);
 app.use('/api', feed);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my server!');
+  res.send('Welcome to my server! This is coolab');
 });
 
 app.listen(port, () => {
